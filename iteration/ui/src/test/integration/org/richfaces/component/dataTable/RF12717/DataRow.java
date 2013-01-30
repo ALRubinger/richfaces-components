@@ -1,4 +1,4 @@
-package org.richfaces.component.dataTable;
+package org.richfaces.component.dataTable.RF12717;
 
 import java.io.Serializable;
 import java.util.Date;

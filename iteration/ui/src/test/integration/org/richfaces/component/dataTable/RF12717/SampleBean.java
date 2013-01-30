@@ -1,4 +1,4 @@
-package org.richfaces.component.dataTable;
+package org.richfaces.component.dataTable.RF12717;
 
 import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;

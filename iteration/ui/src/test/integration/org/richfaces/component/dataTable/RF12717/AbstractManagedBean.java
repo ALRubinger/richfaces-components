@@ -1,4 +1,4 @@
-package org.richfaces.component.dataTable;
+package org.richfaces.component.dataTable.RF12717;
 
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;

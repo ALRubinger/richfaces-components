@@ -1,4 +1,4 @@
-package org.richfaces.component.dataTable;
+package org.richfaces.component.dataTable.RF12717;
 
 import com.google.common.base.Function;
 import org.jboss.arquillian.container.test.api.Deployment;
@@ -11,7 +11,6 @@ import org.jboss.arquillian.warp.Inspection;
 import org.jboss.arquillian.warp.Warp;
 import org.jboss.arquillian.warp.WarpTest;
 import org.jboss.arquillian.warp.jsf.AfterPhase;
-import org.jboss.arquillian.warp.jsf.BeforePhase;
 import org.jboss.arquillian.warp.jsf.Phase;
 import org.jboss.shrinkwrap.api.spec.WebArchive;
 import org.jboss.shrinkwrap.descriptor.api.webapp30.WebAppDescriptor;
@@ -22,7 +21,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.richfaces.component.extendedDataTable.IterationBean;
 import org.richfaces.integration.IterationDeployment;
 import org.richfaces.shrinkwrap.descriptor.FaceletAsset;
 
@@ -38,7 +36,7 @@ import static org.jboss.arquillian.graphene.Graphene.*;
 @RunAsClient
 @WarpTest
 @RunWith(Arquillian.class)
-public class RF12717 {
+public class TestRF12717 {
 
     @Drone
     private WebDriver browser;
@@ -54,11 +52,11 @@ public class RF12717 {
 
     @Deployment
     public static WebArchive createDeployment() {
-        IterationDeployment deployment = new IterationDeployment(RF12717.class, "4.2.3.Final");
+        IterationDeployment deployment = new IterationDeployment(TestRF12717.class, "4.2.3.Final");
         deployment.archive().addClass(SampleBean.class);
         deployment.archive().addClass(AbstractManagedBean.class);
         deployment.archive().addClass(DataRow.class);
-        deployment.archive().addAsWebResource(new File("src/test/resources/", "rf12717.xhtml"), "index.xhtml");
+        deployment.archive().addAsWebResource(new File("src/test/integration/org/richfaces/component/dataTable/RF12717/", "rf12717.xhtml"), "index.xhtml");
 
         deployment.webXml(new Function<WebAppDescriptor, WebAppDescriptor>() {
             @Override
