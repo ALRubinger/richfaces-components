@@ -14,14 +14,14 @@ public class IterationDeployment extends Deployment {
     public IterationDeployment(Class<?> testClass) {
         super(testClass);
         
-        this.addMavenDependency(
-                "org.richfaces.core:richfaces-core-api",
-                "org.richfaces.core:richfaces-core-impl",
-                "org.richfaces.ui.common:richfaces-ui-common-api",
-                "org.richfaces.ui.common:richfaces-ui-common-ui",
-                "org.richfaces.ui.core:richfaces-ui-core-api",
-                "org.richfaces.ui.core:richfaces-ui-core-ui",
-                "org.richfaces.ui.iteration:richfaces-ui-iteration-api");
+//        this.addMavenDependency(
+//                "org.richfaces.core:richfaces-core-api",
+//                "org.richfaces.core:richfaces-core-impl",
+//                "org.richfaces.ui.common:richfaces-ui-common-api",
+//                "org.richfaces.ui.common:richfaces-ui-common-ui",
+//                "org.richfaces.ui.core:richfaces-ui-core-api",
+//                "org.richfaces.ui.core:richfaces-ui-core-ui",
+//                "org.richfaces.ui.iteration:richfaces-ui-iteration-api");
 
         JavaArchive iteration = ShrinkWrap.create(JavaArchive.class, "richfaces-ui-iteration-ui.jar");
         iteration.merge(ShrinkWrap.create(GenericArchive.class).as(ExplodedImporter.class)
@@ -29,6 +29,20 @@ public class IterationDeployment extends Deployment {
                 "/", Filters.includeAll());
         archive().addAsLibrary(iteration);
         archive().addAsWebInfResource(new File("src/test/resources/beans.xml"));
-        
+
+    }
+
+    public IterationDeployment(Class<?> testClass, String version) {
+        super(testClass);
+        this.addMavenDependency(
+                "org.richfaces.core:richfaces-core-api:" + version,
+                "org.richfaces.core:richfaces-core-impl:" + version,
+                "org.richfaces.ui.common:richfaces-ui-common-api:" + version,
+                "org.richfaces.ui.common:richfaces-ui-common-ui:" + version,
+                "org.richfaces.ui.core:richfaces-ui-core-api:" + version,
+                "org.richfaces.ui.core:richfaces-ui-core-ui:" + version,
+                "org.richfaces.ui.iteration:richfaces-ui-iteration-api:" + version,
+                "org.richfaces.ui.iteration:richfaces-ui-iteration-ui:" + version);
+        archive().addAsWebInfResource(new File("src/test/resources/beans.xml"));
     }
 }
